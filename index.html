@@ -12,15 +12,15 @@
         
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('wallpaper.jpg'), url('https://wallpapercave.com/wp/wp4287713.jpg');
-            background-size: cover; background-position: center; border-bottom: 3px solid rgba(255,255,255,0.2);
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('wallpaper.jpg');
+            background-size: cover; background-position: center; background-repeat: no-repeat; border-bottom: 3px solid rgba(255,255,255,0.2);
         }
         .main-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; margin: 0; }
         .signature { margin-top: 15px; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; border-top: 1px solid #fff; padding-top: 10px; }
 
         .container { padding: 60px 15px; max-width: 700px; margin: 0 auto; }
         .memory-card { background: #111; border: 1px solid #222; border-radius: 5px; overflow: hidden; margin-bottom: 40px; box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
-        .memory-card img, .memory-card video { width: 100%; display: block; max-height: 70vh; object-fit: contain; background: #000; }
+        .memory-card img { width: 100%; display: block; max-height: 70vh; object-fit: contain; background: #000; }
         .quote-display { padding: 25px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; text-align: center; background: #161616; border-top: 1px solid #222; line-height: 1.6; color: #ddd; }
     </style>
 </head>
@@ -34,6 +34,27 @@
     <div id="cover-root" class="hero">
         <h1 class="main-title">THE EARTH ARCHIVE</h1>
         <div class="signature">By Ayushi Srivastava</div>
+    </div>
+
+    <div class="container">
+        <section id="gallery-root">
+            <h2 style="text-align:center; font-style:italic; font-family:'Playfair Display'; margin-bottom: 40px;">The Gallery</h2>
+            
+            <div class="memory-card">
+                <img src="Screenshot_20260518_160936_Gallery.jpg" alt="Sunrise Nature">
+                <div class="quote-display">
+                    "The way the sun is peeking through the clouds gives off such a new beginnings vibe. It’s a quiet reminder that clarity always finds a way back to us, even on the grayest days."
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="Screenshot_20260519_141327_Gallery.jpg" alt="Green Leaves">
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
     </div>
 
     <div class="container">
