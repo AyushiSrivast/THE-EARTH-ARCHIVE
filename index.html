@@ -94,6 +94,88 @@
                 card.className = 'memory-card';
                 
                 const isVid = file.type.includes('video');
+                // CLEAN: Only controls. Shuts up when done.
+                const mediaTag = isVid 
+                    ? '<video src="'+e.target.result+'" controls></video>' 
+                    : '<img src="'+e.target.result+'">';
+
+                card.innerHTML = mediaTag + (qIn.value ? '<div class="quote-display">"' + qIn.value + '"</div>' : '');
+                
+                feed.prepend(card);
+                
+                fIn.value = '';
+                qIn.value = '';
+                btn.innerText = "PUBLISH TO ARCHIVE";
+                btn.disabled = false;
+                
+                document.getElementById('gallery-root').scrollIntoView();
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
+    </nav>
+
+    <div id="cover-root" class="hero">
+        <h1 class="main-title">THE EARTH ARCHIVE</h1>
+        <div class="signature">By Ayushi Srivastava</div>
+    </div>
+
+    <div class="container">
+        <section id="gallery-root">
+            <h2 style="text-align:center; font-style:italic; font-family:'Playfair Display'; margin-bottom: 40px;">The Gallery</h2>
+            
+            <div class="memory-card">
+                <img src="Screenshot_20260518_160936_Gallery.jpg" alt="Sunrise Nature">
+                <div class="quote-display">
+                    "The way the sun is peeking through the clouds gives off such a new beginnings vibe. It’s a quiet reminder that clarity always finds a way back to us, even on the grayest days."
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <img src="Screenshot_20260519_141327_Gallery.jpg" alt="Green Leaves">
+            </div>
+
+            <div id="mainFeed"></div>
+        </section>
+
+        <section id="contribution-root">
+            <div class="upload-panel">
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 10px; text-align: center;">ADMIN: UPLOAD NEW MEMORY</p>
+                <input type="file" id="mediaIn" class="input-field">
+                <input type="text" id="quoteIn" placeholder="Your thought..." class="input-field">
+                <button class="btn" id="pubBtn">Publish to Archive</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const fIn = document.getElementById('mediaIn');
+        const qIn = document.getElementById('quoteIn');
+        const btn = document.getElementById('pubBtn');
+        const feed = document.getElementById('mainFeed');
+
+        btn.addEventListener('click', function() {
+            const file = fIn.files[0];
+            if (!file) {
+                alert("Select a file first.");
+                return;
+            }
+
+            const reader = new FileReader();
+            
+            reader.onloadstart = function() {
+                btn.innerText = "PROCESSING...";
+                btn.disabled = true;
+            };
+
+            reader.onload = function(e) {
+                const card = document.createElement('div');
+                card.className = 'memory-card';
+                
+                const isVid = file.type.includes('video');
                 // FIXED: Removed autoplay and muted to allow sound
                 const mediaTag = isVid 
                     ? '<video src="'+e.target.result+'" controls></video>' 
